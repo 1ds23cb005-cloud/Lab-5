@@ -1,13 +1,7 @@
-FROM node:latest
-
-WORKDIR /usr/src/app
-
-COPY package.json ./
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["node", "index.js"]
+- name: Build and Push Docker image
+  uses: docker/build-push-action@v4
+  with:
+    context: ./Node.js
+    file: ./Node.js/Dockerfile
+    push: true
+    tags: lab5:latest
